@@ -1,4 +1,6 @@
-# Lab 1: Docker Introduction
+# Lab 1 (optional): Docker Introduction
+
+⚠️ WARNING: if you are unable to install docker locally, you may skip this lab.
 
 ## Prerequisites
 
