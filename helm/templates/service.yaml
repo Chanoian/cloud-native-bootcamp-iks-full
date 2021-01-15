@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "helm-node-sample-template.name" . }}
+  labels:
+    {{- include "helm-node-sample-template.labels" . | nindent 4 }}
+  namespace: dev-{{ .Values.prefix }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    {{- include "helm-node-sample-template.selectorLabels" . | nindent 4 }}
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}
+      targetPort: 8080

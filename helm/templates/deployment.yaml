@@ -1,0 +1,31 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "helm-node-sample-template.name" . }}
+  labels:
+    {{- include "helm-node-sample-template.labels" . | nindent 4 }}
+  namespace: dev-{{ .Values.prefix }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "helm-node-sample-template.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+         {{- include "helm-node-sample-template.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - name: {{ include "helm-node-sample-template.name" . }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        resources:
+          limits:
+            memory: {{ .Values.resources.limits.memory}}
+            cpu: {{ .Values.resources.limits.cpu}}
+        ports:
+        - containerPort: 8080
+          name: http
+      imagePullSecrets:
+      - name: {{ .Values.image.pullSecret }}

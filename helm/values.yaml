@@ -1,0 +1,40 @@
+# Your initials, used for Ingress URL & namespace 
+prefix: cs
+
+# Name used across the kube resources - adopt with your initials for bootcamp
+nameOverride: "cs-hello-helm-sample"
+
+# Amount of replicas in deployment
+replicaCount: 1
+
+image:
+  # Name of the image - in this case stored in IBM Cloud Private Registry
+  repository: de.icr.io/workshop/helm-app
+  # Tag of the image to pull
+  # tag: latest
+  # Pull policy - "IfNotPresent" -> if present on node does not pull again
+  pullPolicy: IfNotPresent
+  # Pull secret - used to access private container registries
+  # pullSecret: ibmcloud-toolchain-1234-de.icr.io
+
+
+resources:
+  limits:
+    # Memory limit -> 128 MB
+    memory: "128Mi"
+    # CPU Limit -> 500 milliCPU 
+    cpu: "500m"
+
+service:
+  # Recommended service type is Cluster IP, exposed through Ingress
+  type: ClusterIP
+  # Service Port
+  port: 80
+
+ingress:
+  # Ingress resource is applied if true
+  enabled: false
+  # Host used in ingress config
+  host: my-host.eu-de.containers.appdomain.cloud
+  # Secret used in ingress config
+  secret: my-ingress-secret
