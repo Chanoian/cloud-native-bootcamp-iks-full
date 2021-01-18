@@ -33,10 +33,10 @@ Try to execute `kubectl get nodes` to access details about the Kubernetes Worker
 
 ```bash
 $ kubectl get nodes
-NAME             STATUS   ROLES    AGE     VERSION
-10.134.237.212   Ready    <none>   3h18m   v1.17.11+IKS
-10.134.237.244   Ready    <none>   3h18m   v1.17.11+IKS
-10.134.237.245   Ready    <none>   3h19m   v1.17.11+IKS
+NAME            STATUS   ROLES    AGE     VERSION
+10.114.86.229   Ready    <none>   4d20h   v1.18.13+IKS
+10.114.86.232   Ready    <none>   4d20h   v1.18.13+IKS
+10.114.86.239   Ready    <none>   4d20h   v1.18.13+IKS
 ```
 
 **Very good - now you can execute kubectl commands against your Kubernetes cluster**
