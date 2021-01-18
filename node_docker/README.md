@@ -32,7 +32,7 @@ docker ps
 ```
 
 
-### Create a namespace in IBM Cloud
+### Connect to docker registry in IBM Cloud
 
 Login to IBM Cloud, select your account and target your resource group:
 ```bash
@@ -40,10 +40,9 @@ ibmcloud login --sso                    # follow the instructions
 ibmcloud target -g <RESOURCE_GROUP>     # if not default
 ```
 
-Create a namespace in the IBM Cloud Container Registry:
+Select the correct region IBM Cloud Container Registry:
 ```bash
 ibmcloud cr region-set us-south
-ibmcloud cr namespace-add <COMPANY-INITALS>
 ```
 
 
@@ -51,9 +50,9 @@ ibmcloud cr namespace-add <COMPANY-INITALS>
 
 ```bash
 ibmcloud cr login
-docker tag node-js-demo:1.0 us.icr.io/<COMPANY-INITALS>/node-js-demo:1.0
-docker push us.icr.io/<COMPANY-INITALS>/node-js-demo:1.0
+docker tag node-js-demo:1.0 us.icr.io/<BOOTCAMP-NAMESPACE>/node-js-demo-<YOUR-INITIALS>:1.0
+docker push us.icr.io/<BOOTCAMP-NAMESPACE>/node-js-demo-<YOUR-INITIALS>:1.0
 ibmcloud cr image-list
-docker rmi us.icr.io/<COMPANY-INITALS>/node-js-demo:1.0
-docker pull us.icr.io/<COMPANY-INITALS>/node-js-demo:1.0
+docker rmi us.icr.io/<BOOTCAMP-NAMESPACE>/node-js-demo-<YOUR-INITIALS>:1.0
+docker pull us.icr.io/<BOOTCAMP-NAMESPACE>/node-js-demo-<YOUR-INITIALS>:1.0
 ```
