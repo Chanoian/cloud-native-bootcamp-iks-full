@@ -21,6 +21,7 @@ Hint: make sure to select **more** on the Kubernetes YAML examples in above supp
 
 ## Challenge to be solved
 
+Create your own Kubernetes namespace and set it into your Kubernetes context.
 Write a pod definition named yoda-service-pod.yml. Then create a pod in the cluster using this definition to make sure it works.
 
 The specifications of this pod are as follows:
@@ -29,7 +30,7 @@ The specifications of this pod are as follows:
 - The container needs a containerPort of 80.
 - Set the command to run `["nginx"]`
 - Pass in the `["-g", "daemon off;", "-q"]` args to run nginx in quiet mode.
-- Create the pod in the "dev-**your initials**" namespace.
+- Create the pod in the "dev-**yourinitials**" namespace.
 
 ### Verification
 
@@ -40,7 +41,7 @@ $ kubectl get pods -n dev-yourinitials
 NAME    READY   STATUS    RESTARTS   AGE
 nginx   1/1     Running   0          8s
 
-$ kubectl describe pod nginx -n dev-gw
+$ kubectl describe pod nginx -n dev-yourinitials
 [...]
 Events:
   Type    Reason     Age   From                     Message
