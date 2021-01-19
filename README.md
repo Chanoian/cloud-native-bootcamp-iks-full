@@ -1,16 +1,16 @@
 # Cloud Native Bootcamp Labs - IKS
 
-## Day 1 - Intro, Cloud Native + 12 Factors + IBM Cloud Account Setup
+## Day 1 - Intro, Cloud Native + 12 Factors, Containers + IBM Cloud Account Setup
 
 1. [opt. Docker Lab](./lab-01-docker.md)
 1. [IBM Cloud + IKS Connectivity Check](./lab-02-connectivity.md)
 
-## Day 2
+## Day 2 - Kubernetes I - Pod Creation and Configuration
 
 1. [Kubernetes Pod Creation](./lab-03-kube-pod.md)
 1. [Kubernetes Pod Configuration](./lab-04-kube-pod-config.md)
 
-## Day 3
+## Day 3 - Kubernetes II - Multi-Container and Observability
 
 1. [Kubernetes Probes](./lab-05-kube-probes.md)
 
