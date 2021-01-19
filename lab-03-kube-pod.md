@@ -45,7 +45,7 @@ $ kubectl describe pod nginx -n dev-gw
 Events:
   Type    Reason     Age   From                     Message
   ----    ------     ----  ----                     -------
-  Normal  Scheduled  27s   default-scheduler        Successfully assigned dev-gw/nginx to 10.134.237.244
+  Normal  Scheduled  27s   default-scheduler        Successfully assigned dev-yourinitials/nginx to 10.134.237.244
   Normal  Pulling    26s   kubelet, 10.134.237.244  Pulling image "bitnami/nginx"
   Normal  Pulled     20s   kubelet, 10.134.237.244  Successfully pulled image "bitnami/nginx"
   Normal  Created    20s   kubelet, 10.134.237.244  Created container nginx
