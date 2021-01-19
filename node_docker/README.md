@@ -21,7 +21,7 @@ docker ps
 
 Run a bash shell in the container and check that `node_modules` were innstalled:
 ```bash
-docker exec -i my-container /bin/bash
+docker exec -it my-container /bin/bash
 ls
 ```
 
