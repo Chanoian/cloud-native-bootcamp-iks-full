@@ -12,6 +12,8 @@
 
 ## Day 3
 
+1. [Kubernetes Probes](./lab-05-kube-probes.md)
+
 ## Day 4
 
 ## Day 5
