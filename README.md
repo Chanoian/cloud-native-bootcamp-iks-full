@@ -8,7 +8,7 @@
 ## Day 2
 
 1. [Kubernetes Pod Creation](./lab-03-kube-pod.md)
-1. [Kubernetes Pod Configuration](./lab-04-kube-config.md)
+1. [Kubernetes Pod Configuration](./lab-04-kube-pod-config.md)
 
 ## Day 3
 
