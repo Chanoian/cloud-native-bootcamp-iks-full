@@ -23,6 +23,7 @@ Create a pod definition named `yoda-service-pod.yml`, and then create a pod in t
 
 The specifications of this pod are as follows:
 
+- The pod should be called `yoda-service`
 - The current image for the container is `bitnami/nginx`. You do not need a custom command or args.
 - There is some configuration data the container will need:
 ```txt
@@ -41,7 +42,7 @@ yoda.strength=10
 To verify your setup is complete, check /etc/yoda-service for the yoda.cfg file and use the cat command to check it’s contents.
 
 ```bash
-$ kubectl exec -it yoda-service /bin/bash
+$ kubectl exec -it yoda-service -- /bin/bash
 $ cd /etc/yoda-service
 $ cat yoda.cfg
 ```
