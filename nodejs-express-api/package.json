@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-express-api",
+  "version": "1.0.0",
+  "description": "Basic NodeJS App with Express",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bkribbs15/nodejs-express-api.git"
+  },
+  "author": "Bryan Kribbs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bkribbs15/nodejs-express-api/issues"
+  },
+  "homepage": "https://github.com/bkribbs15/nodejs-express-api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "swagger-ui-express": "^4.1.4"
+  }
+}

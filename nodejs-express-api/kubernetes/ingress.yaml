@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: api-ingress
+spec:
+  rules:
+    - host: iks-garage-dach-ddd93d3a0fef01f6b396b69d343df410-0000.eu-de.containers.appdomain.cloud
+      http:
+        paths:
+          - path: /testers
+            backend:
+              serviceName: nodejs-api-service
+              servicePort: 3000
+          - path: /students
+            backend:
+              serviceName: nodejs-api-service
+              servicePort: 3000

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-api-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-api-selector
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: nodejs-api-selector
+        version: current
+    spec:
+      containers:
+      - name: nodejs-api-app
+        image: ibmcase/nodejs-api:v1.0
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 3000
+            name: http
+        resources:
+          requests:
+            cpu: 200m
+            memory: 300Mi
+        env:
+        - name: PORT
+          value: "3000"
+        - name: APPLICATION_NAME
+          value: nodejs-api-app

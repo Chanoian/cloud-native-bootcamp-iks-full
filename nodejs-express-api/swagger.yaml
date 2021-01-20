@@ -1,0 +1,69 @@
+swagger: '2.0'
+info:
+  x-ibm-name: nodejs-test-2
+  title: nodejs-test-2
+  version: 1.0.0
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /v2
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions: {}
+security: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - operation-switch:
+          title: operation-switch
+          case:
+            - operations:
+                - verb: get
+                  path: /students
+              execute:
+                - invoke:
+                    title: /students
+                    timeout: 60
+                    verb: GET
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error:
+                      - null
+                    version: 1.0.0
+                    target-url: 'http://173.193.79.56:32765/students'
+            - operations:
+                - verb: get
+                  path: /testers
+              execute:
+                - invoke:
+                    title: /testers
+                    timeout: 60
+                    verb: GET
+                    cache-response: protocol
+                    cache-ttl: 900
+                    stop-on-error:
+                      - null
+                    version: 1.0.0
+                    target-url: 'http://173.193.79.56:32765/testers'
+          otherwise: []
+          version: 1.0.0
+  phase: realized
+paths:
+  /testers:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+  /students:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+definitions: {}
+tags: []
