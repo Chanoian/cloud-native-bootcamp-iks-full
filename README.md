@@ -15,7 +15,10 @@
 1. [Multi-Container Pods](./lab-04-xtra-multi-container.md) (optional)
 1. [Kubernetes Probes](./lab-05-kube-probes.md)
 
-## Day 4
+## Day 4 - Kubernetes III - Workloads and Networking
+
+1. [Kubernetes Rolling Updates](./lab-06-rolling-updates.md)
+1. [Kubernetes Services](./lab-07-services.md)
 
 ## Day 5
 

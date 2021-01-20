@@ -4,6 +4,16 @@
 
 Remove the existing jedi deployment in your namespace before starting this lab.
 
+Make sure everytime you create resources that you
+
+- target the right Kubernetes cluster
+- target the right Kubernetes namespace and set it into your kubectl context
+
+```bash
+ibmcloud ks cluster config --cluster **kubeclusterid**
+kubectl config set-context --current --namespace=dev-**yourinitials**
+```
+
 ## Supporting Information
 
 https://cloudnative101.dev/lectures/kube-services-networking/
