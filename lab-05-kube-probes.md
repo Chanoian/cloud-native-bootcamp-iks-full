@@ -85,3 +85,12 @@ spec:
         initialDelaySeconds: 5
         periodSeconds: 5
 ```
+
+You have different ways how to see the liveness probe failing.
+
+```bash
+$ kubectl get events --watch
+$ kubectl describe pods/liveness-exec
+```
+
+Don't forget to delete the liveness-exec pod after your tests.
