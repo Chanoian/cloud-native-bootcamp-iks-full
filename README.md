@@ -22,6 +22,8 @@
 
 ## Day 5
 
+1. [ArgoCD Lab](./lab-argocd-app-deploy.md)
+
 ## Day 6
 
 ## Day 7
