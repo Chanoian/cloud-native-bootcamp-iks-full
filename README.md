@@ -12,6 +12,7 @@
 
 ## Day 3 - Kubernetes II - Multi-Container and Observability
 
+1. [Multi-Container Pods](./lab-04-xtra-multi-container.md) (optional)
 1. [Kubernetes Probes](./lab-05-kube-probes.md)
 
 ## Day 4
