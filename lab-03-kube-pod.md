@@ -12,6 +12,16 @@ NAME             STATUS   ROLES    AGE     VERSION
 10.134.237.245   Ready    <none>   3h19m   v1.17.11+IKS
 ```
 
+Make sure everytime you create resources that you
+
+- target the right Kubernetes cluster
+- target the right Kubernetes namespace and set it into your kubectl context
+
+```bash
+ibmcloud ks cluster config --cluster **kubeclusterid**
+kubectl config set-context --current --namespace=dev-**yourinitials**
+```
+
 ## Supporting Information
 
 - https://cloudnative101.dev/lectures/kube-core-concepts/ (how to create namespaces and pods with kubectl)
