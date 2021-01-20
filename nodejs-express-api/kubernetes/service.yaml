@@ -4,8 +4,8 @@ metadata:
   name: nodejs-api-service
 spec:
   type: NodePort
-  ports:
-  - name: http
-    port: 3000
   selector:
-    app: "nodejs-api-selector"
+    app: nodejs-api-selector
+  ports:
+    - name: http
+      port: 3000
