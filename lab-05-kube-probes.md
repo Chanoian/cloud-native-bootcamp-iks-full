@@ -32,7 +32,9 @@ Another issue is caused by new pods when they are starting up. The application t
 
 To fix this, you will need to create another probe. To detect whether the application is ready, the probe should simply make a request to the root endpoint, `/ready`, on port `8080`. If this request succeeds, then the application is ready. Also set a initial delay of 5 seconds for the probes.
 
-Here is the Pod yaml file, add the probes, then create the pod in the cluster to test it. The folder /energy-shield includes the implementation used in the container for your interest.
+### Base Pod YAML for Container Health and Container Startup Issues
+
+Here is the Pod yaml file to be used for both scenarios. Add the probes, then create the pod in the cluster to test it. The folder /energy-shield includes the implementation used in the container for your interest.
 
 ```yaml
 apiVersion: v1
