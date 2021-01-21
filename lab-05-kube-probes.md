@@ -34,7 +34,7 @@ To fix this, you will need to create another probe. To detect whether the applic
 
 ### Base Pod YAML for Container Health and Container Startup Issues
 
-Here is the Pod yaml file to be used for both scenarios. Add the probes, then create the pod in the cluster to test it. The folder /energy-shield includes the implementation used in the container for your interest.
+Here is the Pod yaml file to be used for both scenarios. Add the probes, then create the pod in the cluster to test it.
 
 ```yaml
 apiVersion: v1
@@ -46,6 +46,8 @@ spec:
     - name: energy-shield
       image: ibmcase/energy-shield:1
 ```
+
+The folder /energy-shield in this Git repository includes the implementation used in the container, note that you won't need the node-js code for the lab. You should though take a look into it to get a deeper understanding of the component interactions.
 
 ### Verification
 
