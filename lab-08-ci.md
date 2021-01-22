@@ -18,30 +18,29 @@ In this task, you create a toolchain and add the tools that you need for this tu
 
 1.  Open the menu in the upper-left corner and click **DevOps**. Click **ToolChains**. Click **Create a toolchain**. Type in the search box `toolchain`. Click **Build Your Own Toolchain**. 
     ![Build your own toolchain](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Blank_Template.png)
-2. On the "Build your own toolchain" page, review the default information for the toolchain settings. The toolchain's name identifies it in IBM Cloud. Each toolchain is associated with a specific region and resource group. From the menus on the page, select the region **Dallas** since we are going to use the Beta Managed Tekton Worker, if you use Private Workers you can use any Region.
+2. On the "Build your own toolchain" page, review the default information for the toolchain settings. The toolchain's name identifies it in IBM Cloud. Name your toolchain `toolchain-<YOUR INITIALS>`. Each toolchain is associated with a specific region and resource group. From the menus on the page, select the region **Dallas** since we are going to use the Beta Managed Tekton Worker, if you use Private Workers you can use any Region.
     ![Select_Region](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Region_Select.png)
 3. Click **Create**. The blank toolchain is created.
 4. Click **Add a Tool** and click **Git Repos and Issue Tracking**. 
     ![Git Repos tile](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Add_Tool_Git.png)
     - From the **Repository type** list, select **Clone**. Note: this creates a copy of the repository in your own namespace on IBM's cloud-hosted git repos (based on gitlab). 
-    - In the **Source repository URL** field, type `https://github.com/ibm-garage-dach/hello-tekton.git`.
+    - In the **Source repository URL** field, type `https://github.com/ibm-garage-dach/hello-tekton.git`
     - Make sure to uncheck the **Make this repository private** checkbox and that the **Track deployment of code changes** checkbox is selected.
     ![Git window](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Tekton_Git_Setup.png)
     - Click **Create Integration**. Tiles for Git Issues and Git Code are added to your toolchain.
 5. Return to your toolchain's overview page.
 6. Click **Add a Tool**. Type `pipeline` in seach box and click **Delivery Pipeline**.
     ![Add Tool Delivery Pipeline](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Add_Tool_DP.png)
-    - Type a name for your new pipeline.
+    - Call your pipeline `pipeline-<YOUR INITIALS>`.
     - Click **Tekton**. 
     ![Pipeline type](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Tekton_Select.png)
-    - Make sure that the **Show apps in the View app menu** checkbox is selected. All the apps that your pipeline creates are shown in the **View App** list on the toolchain's Overview page.
     - Click **Create Integration** to add the Delivery Pipeline to your toolchain.
 
 ## Creating an API Key
 
 Next we must create an API key that the pipeline can use to connect to the cluster. For simplicity we'll use a platform key, but in a production scenario we would create a service ID, grant that the necessary access, and then create a service API key.
 
-Run the following command to create the platform API key:
+Run the following command in a shell (e.g. Cloud Shell) to create the platform API key:
 
 ```bash
 ibmcloud iam api-key-create bootcamp-tekton-key
@@ -51,6 +50,7 @@ Note down the `API Key` in the output of this command - you will need it for the
 
 ## Configuring the delivery pipeline
 
+0. If you don't have your toolchain open any more, navigate back to it.
 1. Click **Delivery Pipeline** to open the Tekton Delivery Pipeline dashboard. Click the **Definitions** tab and complete these tasks:
   - Click **Add** to add your repository.
   - Specify the Git repo and URL that contains the Tekton pipeline definition and related artifacts. From the list, select the Git repo that you created earlier.
