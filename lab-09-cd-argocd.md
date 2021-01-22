@@ -1,4 +1,4 @@
-# ArgoCD
+# Lab 9: Continous Deplyoment with ArgoCD
 
 ## Prerequisites
 
