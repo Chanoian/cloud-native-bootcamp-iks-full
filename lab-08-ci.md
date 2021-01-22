@@ -23,8 +23,8 @@ In this task, you create a toolchain and add the tools that you need for this tu
 3. Click **Create**. The blank toolchain is created.
 4. Click **Add a Tool** and click **Git Repos and Issue Tracking**. 
     ![Git Repos tile](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Add_Tool_Git.png)
-    - From the **Repository type** list, select **Clone**. 
-    - In the **Source repository URL** field, type `https://github.com/csantanapr/hello-tekton.git`.
+    - From the **Repository type** list, select **Clone**. Note: this creates a copy of the repository in your own namespace on IBM's cloud-hosted git repos (based on gitlab). 
+    - In the **Source repository URL** field, type `https://github.com/ibm-garage-dach/hello-tekton.git`.
     - Make sure to uncheck the **Make this repository private** checkbox and that the **Track deployment of code changes** checkbox is selected.
     ![Git window](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Tekton_Git_Setup.png)
     - Click **Create Integration**. Tiles for Git Issues and Git Code are added to your toolchain.
@@ -36,44 +36,57 @@ In this task, you create a toolchain and add the tools that you need for this tu
     ![Pipeline type](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Tekton_Select.png)
     - Make sure that the **Show apps in the View app menu** checkbox is selected. All the apps that your pipeline creates are shown in the **View App** list on the toolchain's Overview page.
     - Click **Create Integration** to add the Delivery Pipeline to your toolchain.
-7. Click **Delivery Pipeline** to open the Tekton Delivery Pipeline dashboard. Click the **Definitions** tab and complete these tasks:
+
+## Creating an API Key
+
+Next we must create an API key that the pipeline can use to connect to the cluster. For simplicity we'll use a platform key, but in a production scenario we would create a service ID, grant that the necessary access, and then create a service API key.
+
+Run the following command to create the platform API key:
+
+```bash
+ibmcloud iam api-key-create bootcamp-tekton-key
+```
+
+Note down the `API Key` in the output of this command - you will need it for the next step.
+
+## Configuring the delivery pipeline
+
+1. Click **Delivery Pipeline** to open the Tekton Delivery Pipeline dashboard. Click the **Definitions** tab and complete these tasks:
   - Click **Add** to add your repository.
   - Specify the Git repo and URL that contains the Tekton pipeline definition and related artifacts. From the list, select the Git repo that you created earlier.
   - Select the branch in your Git repo that you want to use. For this tutorial, use the default value.
   - Specify the directory path to your pipeline definition within the Git repo. You can reference a specific definition within the same repo. For this tutorial, use the default value.
   ![Pipeline window](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Tekton_Repo_Definition.png)
   - Click **Add**, then click **Save**
-8. Click the **Worker** tab and select the private worker that you want to use to run your Tekton pipeline on the associated cluster. Either select the private worker you set up in the previous steps, or select the **IBM Managed workers in DALLAS** option.
+
+2. Click the **Worker** tab and select the private worker that you want to use to run your Tekton pipeline on the associated cluster. Either select the private worker you set up in the previous steps, or select the **IBM Managed workers in DALLAS** option.
   ![Worker tab](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Tekton_Worker.png)
    - Click **Save**
-9. Click the **Triggers** tab, click **Add trigger**, and click **Git Repository**. Associate the trigger with an event listener: 
+3. Click the **Triggers** tab, click **Add trigger**, and click **Git Repository**. Associate the trigger with an event listener: 
 - From the **Repository** list, select your repo.
 - Select the **When a commit is pushed** checkbox, and in the **EventListener** field, make sure that **listener** is selected.
 ![Git Repository trigger](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Tekton_Trigger.png)
 - Click **Save**
-10. On the **Triggers** tab, click **Add trigger** and click **Manual**. Associate that trigger with an event listener:
+4. On the **Triggers** tab, click **Add trigger** and click **Manual**. Associate that trigger with an event listener:
   - In the **EventListener** field, make sure that **listener** is selected.
   - Click **Save**.
   ![Manual trigger](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Tekton_Manual_Trigger.png)
    **Note:** Manual triggers run when you click **Run pipeline** and select the trigger. Git repository triggers run when the specified Git event type occurs for the specified Git repo and branch. The list of available event listeners is populated with the listeners that are defined in the pipeline code repo. 
-11. Click the **Environment properties** tab and define the environment properties for this tutorial. To add each property, click **Add property** and click **Text property**. Add these properties:
+5. Click the **Environment properties** tab and define the environment properties for this tutorial. To add each property, click **Add property** and click **Text property**. Add these properties:
 
 
-| Parameter     | Required? | Description  |
-| ------------- |:-------------:| -----:|
-| apikey     | required | Type the API key that you created earlier in this tutorial. |
-| cluster      | Optional (cluster)      |   Type the name of the Kubernetes cluster that you created. |
-| registryNamespace | required |  Type the IBM Image Registry namespace where the app image will be built and stored. To use an existing namespace, use the CLI and run `ibmcloud cr namespace-list` to identify all your current namespaces  |
-| repository | required  | Type the source Git repository where your resources are stored. This value is the URL of the Git repository that you created earlier in this tutorial. To find your repo URL, return to your toolchain and click the **Git** tile. When the repository is shown, copy the URL. |
-| revision | Optional (master) | The Git branch  |
-| clusterRegion | Optional (us-south) | Type the region where your  cluster is located. |
-| clusterNamespace | Optional (prod)  | The namespace in your cluster where the app will be deployed. |
-| registryRegion | Optional (us-south) | The region where your Image registry is located. To find your registry region, use the CLI and run `ibmcloud cr region`. |
-
+| Parameter     |  Description  |
+| ------------- | -----|
+| apikey     | Type the API key that you created earlier in this tutorial. |
+| cluster      | Type the name of our bootcamp cluster. |
+| registryNamespace | Type the IBM Image Registry namespace where the app image will be built and stored. This is the same as the name of our bootcamp cluster.  |
+| imageName | The base name of the docker image. Set this to `hello-tekton-<YOUR INITIALS>`
+| repository | Type the source Git repository where your resources are stored. This value is the URL of the Git repository that you created earlier in this tutorial. To find your repo URL, return to your toolchain and click the **Git** tile. When the repository is shown, copy the URL. |
+| revision | (optional) The Git branch - default is `master` |
+| clusterNamespace | The namespace in your cluster where the app will be deployed - this should be your namespace: `dev-<YOUR INITIALS>` |
 
   ![Environment properties](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Tekton_Environment.png)
-12. Click **Save**
-
+6. Click **Save**
 
 ## Explore the pipeline
 
@@ -138,10 +151,6 @@ In this task, you can remove any of the content that is generated by this tutori
     - Click **Delete**. Deleting a toolchain removes all of its tool integrations, which might delete resources that are managed by those integrations.
     - Confirm the deletion by typing the name of the toolchain and clicking **Delete**. 
     - **Tip:** When you delete a GitHub, GitHub Enterprise, or Git Repos and Issue Tracking tool integration, the associated repo isn't deleted from GitHub, GitHub Enterprise, or Git Repos and Issue Tracking. You must manually remove the repo.
-1. Delete the cluster or discard the namespace from it. It is easiest to delete the entire namespace (Please do not delete the `default` namespace) by using the IBM Cloud™ Kubernetes Service CLI from a command-line window. However, if you have other resources that you need to keep in the namespace, you need to delete the application resources individually instead of the entire namespace. To delete the entire namespace, enter this command:
-    ```bash
-    kubectl delete namespace [not-the-default-namespace]
-    ```
 1. Delete your IBM Cloud API key.
   - From the **Manage** menu, click **Access (IAM)**. Click **IBM Cloud API Keys**.
   - Find your API Key in the list and select **Delete** from the menu to the right of the API Key name.
@@ -149,12 +158,6 @@ In this task, you can remove any of the content that is generated by this tutori
     ```bash
     ibmcloud cr image-rm IMAGE [IMAGE...]
     ```
-    If you created a registry namespace for the tutorial, delete the entire registry namespace by entering this command:
-    ```bash
-    ibmcloud cr namespace-rm NAMESPACE
-    ```
-      - **Note:** You can run this tutorial many times by using the same registry namespace and cluster parameters without discarding previously generated resources. The generated resources use randomized names to avoid conflicts.
-
 
 ### Summary
 
