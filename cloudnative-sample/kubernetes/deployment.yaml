@@ -5,7 +5,7 @@ metadata:
   labels:
     chart: cloudnativesampleapp-1.0.0
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: cloudnativesampleapp-selector
@@ -17,23 +17,23 @@ spec:
         version: current
     spec:
       containers:
-      - name: cloudnativesampleapp
-        image: ibmcase/greeting:1
-        imagePullPolicy: IfNotPresent
-        ports:
-          - containerPort: 9080
-            name: http
-        readinessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 9080
-          initialDelaySeconds: 60
-        resources:
-          requests:
-            cpu: 200m
-            memory: 300Mi
-        env:
-        - name: PORT
-          value: "9080"
-        - name: APPLICATION_NAME
-          value: cloudnativesampleapp
+        - name: cloudnativesampleapp
+          image: ibmcase/greeting:1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9080
+              name: http
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 9080
+            initialDelaySeconds: 60
+          resources:
+            requests:
+              cpu: 200m
+              memory: 300Mi
+          env:
+            - name: PORT
+              value: "9080"
+            - name: APPLICATION_NAME
+              value: cloudnativesampleapp
