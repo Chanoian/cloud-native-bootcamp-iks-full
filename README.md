@@ -22,7 +22,7 @@
 
 ## Day 5
 
-1. [CI with Tekton](./lab-08-ci.md)
+1. [CI+CD with Tekton](./lab-08-ci.md)
 1. [CD with ArgoCD](./lab-09-cd-argocd.md)
 
 ## Day 6
