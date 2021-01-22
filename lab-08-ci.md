@@ -122,6 +122,12 @@ To run the manual trigger that you set up in the previous task, click **Run pipe
 6. Click the URL to see the running application.
     ![Running app](https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/src/pages/lectures/continuous-integration/activities/ibm-toolchain/images/Tekton_App.png)
 
+**Note:** if your browser won't let you connect, you can also copy the URL and then use Cloud Shell to curl it:
+
+```bash
+curl <THE URL>
+```
+
 ## Modify the App Code 
 
 In this task, you modify the application and redeploy it. You can see how your Tekton-based delivery pipeline automatically picks up the changes in the application on commit and redeploys the app. 
