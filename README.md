@@ -28,6 +28,7 @@
 ## Day 6 - API Connect
 
 1. [Accessing API Connect on IBM Cloud](./lab-apic-01.md)
+1. [Creating an API](./lab-apic-02.md)
 
 ## Day 7
 
