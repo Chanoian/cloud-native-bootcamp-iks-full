@@ -2,11 +2,11 @@
 
 ## Prerequisites
 
-- Access to IBM Cloud and our shared API Connect instance
+Access to IBM Cloud and our shared API Connect instance.
 
 ## Supporting Information
 
-- Navigate to your API Connect Instance through IBM Cloud -> Dashboard -> API Management
+Navigate to your API Connect Instance through IBM Cloud -> Dashboard -> API Management. Use the pin button to move the menu entry upwards for easier accessiblity.
 
 ![image](images/lab-apic-01-nav.png)
 
