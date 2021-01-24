@@ -20,12 +20,12 @@
 1. [Kubernetes Rolling Updates](./lab-06-rolling-updates.md)
 1. [Kubernetes Services](./lab-07-services.md)
 
-## Day 5
+## Day 5 - Cloud Native Continuous Integration + Delivery
 
 1. [CI+CD with Tekton](./lab-08-ci.md)
 1. [CD with ArgoCD](./lab-09-cd-argocd.md)
 
-## Day 6
+## Day 6 - API Connect
 
 ## Day 7
 

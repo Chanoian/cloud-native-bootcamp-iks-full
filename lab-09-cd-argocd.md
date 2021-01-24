@@ -2,7 +2,7 @@
 
 ## Supporting Information
 
-- Login to shared ArgoCD environment `https://argocd-server-argocd.ocp-dach-garage-ddd93d3a0fef01f6b396b69d343df410-0000.eu-de.containers.appdomain.cloud`
+- Login to shared ArgoCD environment we have provided to you as part of the lab delivery
 
 - Create a new application with the following parameters
 
