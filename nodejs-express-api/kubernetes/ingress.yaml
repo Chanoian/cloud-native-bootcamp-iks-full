@@ -1,10 +1,16 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: api-ingress
+  annotations:
+    kubernetes.io/ingress.class: public-iks-k8s-nginx
 spec:
+  tls:
+    - hosts:
+        - iks-garage-dach-21-ddd93d3a0fef01f6b396b69d343df410-0000.eu-de.containers.appdomain.cloud
+      secretName: iks-garage-dach-21-ddd93d3a0fef01f6b396b69d343df410-0000
   rules:
-    - host: iks-garage-dach-ddd93d3a0fef01f6b396b69d343df410-0000.eu-de.containers.appdomain.cloud
+    - host: iks-garage-dach-21-ddd93d3a0fef01f6b396b69d343df410-0000.eu-de.containers.appdomain.cloud
       http:
         paths:
           - path: /testers

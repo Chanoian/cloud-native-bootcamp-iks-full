@@ -137,3 +137,6 @@ dist
 
 # Lab
 solution/
+
+# Bootcamp specific files
+nodejs-express-api/kubernetes/ingress_cust.yaml
