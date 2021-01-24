@@ -16,7 +16,7 @@ Then select the '\*-bootcamp-apic' API Connect service to navigate to the API Co
 
 ## Challenges to be solved
 
-Create a new API Catalog called 'dev-yourinitials' within the API Connect Instance by just adding it from the Dashboard.
+Create a new API Catalog called 'dev-**yourinitials**' within the API Connect Instance by just adding it from the Dashboard.
 
 ## Verification
 
