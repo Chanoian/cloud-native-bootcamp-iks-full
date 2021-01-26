@@ -52,7 +52,7 @@ java -jar ./build/libs/kafka-java-console-sample-2.0.jar <kafka_brokers_sasl> <a
 [2021-01-26 16:54:13,766] INFO Message produced, offset: 945 (com.eventstreams.samples.ProducerRunnable)
 ```
 
-Then Consume those Kafka events from your custom topic.
+Then consume those Kafka events from your custom topic.
 
 ```bash
 java -jar ./build/libs/kafka-java-console-sample-2.0.jar <kafka_brokers_sasl> <api_key> -consumer -topic <dev-yourinitials>
