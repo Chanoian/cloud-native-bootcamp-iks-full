@@ -15,6 +15,8 @@ Make sure that you have configured Cloud Shell to:
 ibmcloud resource service-instances
 ```
 
+You should see one called `co-operators-bootcamp-postgresql`.
+
 2. Bind that service into your namespace in the cluster. This will create a secret that contains the credentials required to connect to that service:
 
 ```sh
@@ -57,3 +59,7 @@ We're all sharing the database so you will see words that others have added! You
 ```sh
 curl -X PUT http://<THE_NODE_IP_AND_PORT>/words -d "word=IBM Cloud" -d "definition=is awesome"
 ```
+
+Note: your shell might be a bit messed up after running this command. Hit <kbd>Enter</kbd> a couple of times to fix this.
+
+You can test whether you insert was successful by fetching the stored words again.
