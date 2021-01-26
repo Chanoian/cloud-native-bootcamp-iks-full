@@ -35,7 +35,7 @@
 1. [Kubernetes Storage](./lab-18-storage.md)
 1. [Connect to a PostgreSQL Database](./lab-postgres.md)
 
-## Day 8
+## Day 8 - Kafka / IBM Event Streams
 
 1. [Accessing Kafka / IBM Event Streams on IBM Cloud](./lab-kafka-01.md)
 
