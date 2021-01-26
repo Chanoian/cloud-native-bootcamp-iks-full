@@ -37,6 +37,8 @@
 
 ## Day 8
 
+1. [Accessing Kafka / IBM Event Streams on IBM Cloud](./lab-kafka-01.md)
+
 ## Day 9
 
 ## Day 10
