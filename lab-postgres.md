@@ -51,15 +51,13 @@ If you get stuck, you might find some useful YAML on the [original lab](https://
 The app has a UI but that won't be accessible from the cloud shell, luckily we can use its REST API directly. You can get the all the words stored in the database with the following command:
 
 ```sh
-curl http://<THE_NODE_IP_AND_PORT>/words
+curl -w "\n" http://<THE_NODE_IP_AND_PORT>/words
 ```
 
 We're all sharing the database so you will see words that others have added! You can add a new word with the following command:
 
 ```sh
-curl -X PUT http://<THE_NODE_IP_AND_PORT>/words -d "word=IBM Cloud" -d "definition=is awesome"
+curl -w "\n" -X PUT http://<THE_NODE_IP_AND_PORT>/words -d 'word=IBM Cloud' -d 'definition=is awesome'
 ```
-
-Note: your shell might be a bit messed up after running this command. Hit <kbd>Enter</kbd> a couple of times to fix this.
 
 You can test whether you insert was successful by fetching the stored words again.
