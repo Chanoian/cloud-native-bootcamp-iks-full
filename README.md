@@ -30,7 +30,9 @@
 1. [Accessing API Connect on IBM Cloud](./lab-apic-01.md)
 1. [Creating an API](./lab-apic-02.md)
 
-## Day 7
+## Day 7 - Kubernetes Storage + Cloud Databases
+
+1. [Kubernetes Storage](./lab-18-storage.md)
 
 1. [Connect to a PostgreSQL Database](./lab-postgres.md)
 
