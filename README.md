@@ -33,7 +33,6 @@
 ## Day 7 - Kubernetes Storage + Cloud Databases
 
 1. [Kubernetes Storage](./lab-18-storage.md)
-
 1. [Connect to a PostgreSQL Database](./lab-postgres.md)
 
 ## Day 8
