@@ -40,6 +40,8 @@ Your task is to deploy this application into our kubernetes cluster and expose i
 
 In order to connect to the database, the container is expecting an environment variable called `BINDING` to be exposed to a container, this should contain the contents of the `binding` key from inside the secret you created earlier.
 
+The container exposes port 8080 to serve HTTP traffic.
+
 If you get stuck, you might find some useful YAML on the [original lab](https://cloudnative101.dev/electives/data-services/activities/labs/lab1/) that I adapted.
 
 ## Testing the app
