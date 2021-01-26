@@ -40,7 +40,7 @@ We've already built a docker image for this application, which is available at `
 
 Your task is to deploy this application into our kubernetes cluster and expose it to the world. You'll want to use a `Deployment` for this, and expose it using a `Service` of type `NodePort`.
 
-In order to connect to the database, the container is expecting an environment variable called `BINDING` to be exposed to a container, this should contain the contents of the `binding` key from inside the secret you created earlier.
+In order to connect to the database, the container is expecting an environment variable called `BINDING` to be defined, this should contain the contents of the `binding` key from inside the secret you created earlier.
 
 The container exposes port 8080 to serve HTTP traffic.
 
@@ -48,7 +48,7 @@ If you get stuck, you might find some useful YAML on the [original lab](https://
 
 ## Testing the app
 
-The app has a UI but that won't be accessible from the cloud shell, luckily we can use its REST API directly. You can get the all the words stored in the database with the following command:
+The app has a web UI but that won't be accessible from the cloud shell, luckily we can use its REST API directly. You can get the all the words stored in the database with the following command:
 
 ```sh
 curl -w "\n" http://<THE_NODE_IP_AND_PORT>/words
@@ -60,4 +60,4 @@ We're all sharing the database so you will see words that others have added! You
 curl -w "\n" -X PUT http://<THE_NODE_IP_AND_PORT>/words -d 'word=IBM Cloud' -d 'definition=is awesome'
 ```
 
-You can test whether you insert was successful by fetching the stored words again.
+You can test whether your insert was successful by fetching the stored words again.
