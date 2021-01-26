@@ -1,0 +1,1 @@
+/poll "Lab: Connect to a PostgreSQL Database Survey" "I have created a secret with the database credentials" "I have deployed the sample app and exposed it through a service" "I have tested the sample app"
