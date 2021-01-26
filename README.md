@@ -32,6 +32,8 @@
 
 ## Day 7
 
+1. [Connect to a PostgreSQL Database](./lab-postgres.md)
+
 ## Day 8
 
 ## Day 9
