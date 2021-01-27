@@ -64,9 +64,9 @@ Be patient, it can take a few minutes until the first metrics data flows into ou
 
 You should see the core four golden signals for your deployment:
 
-Latency (Response Time per Service), Traffic (Request Rate per Service), Errors (Error Rate per Service).
+**Latency** (Response Time per Service), **Traffic** (Request Rate per Service), **Errors** (Error Rate per Service).
 
 ![image](images/lab-sysdig-05a.png)
 
-Finally Saturation (CPU, Memory, Storage, Networking).
+Finally **Saturation** (CPU, Memory, Storage, Networking).
 ![image](images/lab-sysdig-05b.png)
