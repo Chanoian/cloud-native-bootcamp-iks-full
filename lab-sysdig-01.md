@@ -2,9 +2,8 @@
 
 ## Prerequisites
 
-- Access to IBM Cloud
-- Connected to Kubernetes cluster with attached Sysdig agent
-- Assumption here is that most of you will use IBM Cloud Shell due to networking restrictions (this includes all the required tools you will use, e.g. curl, kubectl, etc.)
+- Connected to IBM Kubernetes cluster with attached Sysdig agent
+- Assumption here is that most of you will use IBM Cloud Shell (due to networking and local tools, like curl)
 
 Make sure everytime you create resources that you
 
@@ -16,7 +15,7 @@ ibmcloud ks cluster config --cluster **kubeclusterid**
 kubectl config set-context --current --namespace=dev-**yourinitials**
 ```
 
-## Supporting Information
+## References (but not needed for lab)
 
 https://cloudnative101.dev/electives/monitoring/sysdig/
 https://cloudnative101.dev/electives/monitoring/sysdig/activities/dashboards/
@@ -24,16 +23,16 @@ https://cloudnative101.dev/electives/monitoring/sysdig/activities/alerts/
 
 ## Challenges to be solved
 
-### Create the test deployment
+### Create test deployment producing load
 
-Create the following test deployment along with the service definition in your namespace.
+1. Create the following test deployment along with the service definition in your namespace.
 
 ```bash
 $ kubectl -n dev-yourinitials create deployment yourinitials-web-app --image=docker.io/kennethreitz/httpbin
 $ kubectl -n dev-yourinitials create svc nodeport yourinitials-web-app --tcp=8080:80
 ```
 
-### Add a port mapping
+2. Add a port mapping
 
 Create a port mapping to run local curl requests, so that we can produce application metrics data.
 
@@ -43,7 +42,7 @@ $ kubectl -n dev-yourinitials port-forward service/yourinitials-web-app 8080:808
 
 Bring the port-forwarding kubectl command in the background with pressing **CTRL-Z** and then typing **bg** .
 
-### Start creating requests
+3. Start creating HTTP requests
 
 ```bash
 $ while true; do sleep 1; curl http://localhost:8080/status/200 -si | head -1 ; done
@@ -53,7 +52,8 @@ Be patient, it can take a few minutes until the first metrics data flows into ou
 
 ### Create a custom Sysdig Dashboard (based on Kubernetes Service Golden Signal template)
 
-1. Navigate to the Kubernetes Service Golden Signal default template
+1. Navigate to the Kubernetes Service Golden Signal default template (Dashboard -> Dashboard Templates -> Kubernetes)
+   ![image](images/lab-sysdig-01.png)
 
 2. Create a new Custom Dashboard based on this template called "yourinitials - Kubernetes Service Golden Signals" .
    ![image](images/lab-sysdig-02.png)
@@ -61,26 +61,16 @@ Be patient, it can take a few minutes until the first metrics data flows into ou
 3. Scope it down to your namespace dev-yourinitials and your deployment yourinitials-web-app.
    ![image](images/lab-sysdig-03.png)
 
-### Create an email notification channel
-
-1. Create an email notification channel called "gw-sysdig-channel"
-
-2. Create a custom high severity metric alert with the following characteristics:
-
-- Name: [gw Web Service] HTTP Errors
-- Metric: Sum of net.http.error.count
-- Scope: Use kubernetes.namespace.name + kubernetes.service.name
-- Trigger: if metric > 1 for the last 1 minute in average send a single alert
-- Activate your created email notification channel for this alert
-
-### Fire fake HTTP 500 errors
-
-Create additional HTTP 500 errors with beyond additional curl requests.
-
-```bash
-while true; do sleep 0.1; curl http://localhost:8080/status/500 -si | head -1 ; done
-```
+4. In Dashboards -> My Dashboards you will find your created dashboard.
+   ![image](images/lab-sysdig-04.png)
 
 ## Verification
 
-You should receive an inital test alert email from Sysdig + the alert email about the HTTP 500 errors. Don't forget to deactivate the alert after your tests.
+You should see the core four golden signals for your deployment:
+
+Latency (Response Time per Service), Traffic (Request Rate per Service), Errors (Error Rate per Service).
+
+![image](images/lab-sysdig-05.png)
+
+Finally Saturation (CPU, Memory, Storage, Networking).
+![image](images/lab-sysdig-06.png)
