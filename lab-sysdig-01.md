@@ -62,7 +62,7 @@ Be patient, it can take a few minutes until the first metrics data flows into ou
 
 ## Verification
 
-You should see the core four golden signals for your deployment:
+You should see data with regards to the four golden signals for your deployment:
 
 **Latency** (Response Time per Service), **Traffic** (Request Rate per Service), **Errors** (Error Rate per Service).
 
