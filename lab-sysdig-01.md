@@ -3,9 +3,8 @@
 ## Prerequisites
 
 - Access to IBM Cloud
-- Connected with Kubernetes cluster with attached Sysdig instance
-- Curl or some equivalent tool to produce HTTP requests (e.g. postman or similar)
-- Assumption here is that most of you will use IBM Cloud Shell due to networking restrictions.
+- Connected to Kubernetes cluster with attached Sysdig agent
+- Assumption here is that most of you will use IBM Cloud Shell due to networking restrictions (this includes all the required tools you will use, e.g. curl, kubectl, etc.)
 
 Make sure everytime you create resources that you
 
@@ -54,14 +53,14 @@ Be patient, it can take a few minutes until the first metrics data flows into ou
 
 ### Create a custom Sysdig Dashboard (based on Kubernetes Service Golden Signal template)
 
-1. Navigate to the Kubernetes Service Golden Signal default template
-   ![image](images/lab-sysdig-01.png)
+Navigate to the Kubernetes Service Golden Signal default template
+![image](images/lab-sysdig-01.png)
 
-2. Create a new Custom Dashboard based on this template called "yourinitials - Kubernetes Service Golden Signals" .
-   ![image](images/lab-sysdig-02.png)
+Create a new Custom Dashboard based on this template called "yourinitials - Kubernetes Service Golden Signals" .
+![image](images/lab-sysdig-02.png)
 
-3. Scope it down to your namespace dev-yourinitials and your deployment yourinitials-web-app.
-   ![image](images/lab-sysdig-03.png)
+Scope it down to your namespace dev-yourinitials and your deployment yourinitials-web-app.
+![image](images/lab-sysdig-03.png)
 
 ### Create an email notification channel
 
