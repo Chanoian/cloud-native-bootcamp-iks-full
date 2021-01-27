@@ -1,0 +1,1 @@
+/poll "Lab: Spring & Kafka" "I have run and tested the first sample" "(Optional) I have changed the topic" "I have run and tested the 2nd sample" "(Optional) I have added a new type" "I have run and tested the 3rd sample" "(Optional) I have changed the sample to autocommit" "(Extra credit) I have deployed a sample to kubernetes"
