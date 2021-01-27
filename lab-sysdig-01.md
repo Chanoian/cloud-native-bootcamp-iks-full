@@ -66,7 +66,7 @@ You should see the core four golden signals for your deployment:
 
 Latency (Response Time per Service), Traffic (Request Rate per Service), Errors (Error Rate per Service).
 
-![image](images/lab-sysdig-05.png)
+![image](images/lab-sysdig-05a.png)
 
 Finally Saturation (CPU, Memory, Storage, Networking).
-![image](images/lab-sysdig-06.png)
+![image](images/lab-sysdig-05b.png)
