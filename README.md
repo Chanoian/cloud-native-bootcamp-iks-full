@@ -38,6 +38,7 @@
 ## Day 8 - Kafka / IBM Event Streams
 
 1. [Accessing Kafka / IBM Event Streams on IBM Cloud](./lab-kafka-01.md)
+2. [Using Kafka with Spring](./lab-kafka-02.md)
 
 ## Day 9
 
