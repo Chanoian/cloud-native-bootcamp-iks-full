@@ -101,7 +101,7 @@ Take one of the spring samples and deploy it as a kubernetes application inside 
 While we don't have docker available in the cloud shell, you can use the following command to remotely build the docker image:
 
 ```sh
-ibmcloud cr build -t us.icr.io/<SHARED_NAMESPACE>/kafka-<YOUR_INITIALS>
+ibmcloud cr build -t us.icr.io/<SHARED_NAMESPACE>/kafka-<YOUR_INITIALS> .
 ```
 
 The shared namespace has the same name as the kubernetes cluster.
