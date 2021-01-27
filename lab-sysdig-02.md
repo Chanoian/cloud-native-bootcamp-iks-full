@@ -1,4 +1,4 @@
-# Lab: Using Sysdig for Kubernetes Service Monitoring
+# Lab: Using Sysdig for Kubernetes Service Monitoring @DOM FEEL FREE TO ADOPT AS NEEDED
 
 ## Prerequisites
 
