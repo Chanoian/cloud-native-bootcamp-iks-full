@@ -40,6 +40,8 @@
 1. [Accessing Kafka / IBM Event Streams on IBM Cloud](./lab-kafka-01.md)
 2. [Using Kafka with Spring](./lab-kafka-02.md)
 
-## Day 9
+## Day 9 - Monitoring with Sysdig
+
+1. [Using Sysdig Dashboards](./lab-sysdig-01.md)
 
 ## Day 10
