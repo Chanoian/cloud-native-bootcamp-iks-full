@@ -53,14 +53,13 @@ Be patient, it can take a few minutes until the first metrics data flows into ou
 
 ### Create a custom Sysdig Dashboard (based on Kubernetes Service Golden Signal template)
 
-Navigate to the Kubernetes Service Golden Signal default template
-![image](images/lab-sysdig-01.png)
+1. Navigate to the Kubernetes Service Golden Signal default template
 
-Create a new Custom Dashboard based on this template called "yourinitials - Kubernetes Service Golden Signals" .
-![image](images/lab-sysdig-02.png)
+2. Create a new Custom Dashboard based on this template called "yourinitials - Kubernetes Service Golden Signals" .
+   ![image](images/lab-sysdig-02.png)
 
-Scope it down to your namespace dev-yourinitials and your deployment yourinitials-web-app.
-![image](images/lab-sysdig-03.png)
+3. Scope it down to your namespace dev-yourinitials and your deployment yourinitials-web-app.
+   ![image](images/lab-sysdig-03.png)
 
 ### Create an email notification channel
 
