@@ -1,21 +1,17 @@
-# Lab: Using Sysdig for Kubernetes Service Monitoring
+# Lab: Using Sysdig Dashboards
 
 ## Prerequisites
 
 - Connected to IBM Kubernetes cluster with attached Sysdig agent
 - Assumption here is that most of you will use IBM Cloud Shell (due to networking and local tools, like curl)
-
-Make sure everytime you create resources that you
-
-- target the right Kubernetes cluster
-- target the right Kubernetes namespace and set it into your kubectl context
+- Make sure everytime you create resources that you target the right Kubernetes cluster and namespace
 
 ```bash
 ibmcloud ks cluster config --cluster **kubeclusterid**
 kubectl config set-context --current --namespace=dev-**yourinitials**
 ```
 
-## References (but not needed for lab)
+## References (but not needed for this lab)
 
 https://cloudnative101.dev/electives/monitoring/sysdig/
 https://cloudnative101.dev/electives/monitoring/sysdig/activities/dashboards/
