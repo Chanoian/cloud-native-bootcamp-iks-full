@@ -43,5 +43,7 @@
 ## Day 9 - Monitoring with Sysdig
 
 1. [Using Sysdig Dashboards](./lab-sysdig-01.md)
+2. [Using Sysdig Metrics](./lab-sysdig-02.md)
+3. [Monitoring Java with Prometheus](./lab-sysdig-03.md)
 
 ## Day 10
