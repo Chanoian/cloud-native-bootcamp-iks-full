@@ -29,7 +29,7 @@ Create the following test pod to produce log statements.
 ```bash
 $ kubectl run my-logs \
  --rm -it \
- -l "app=YOUR-INITALS-app,tier=production" \
+ -l "app=yourinitials-app,tier=production" \
  --image=busybox \
  -- sh
 
@@ -41,9 +41,16 @@ If you do not see a command prompt, try pressing enter.
 
 ### Use the LogDNA Dashboard to find your logs
 
-1. Find your log statements in the LogDNA dashboard
-1. Add a filter with the label.app attribute and create a few additional log statements
+1. Startup the shared LogDNA dashboard that can be found in **Navigation Menu** -> **Observability** -> **Logging** .
+   ![image](images/lab-logdna-01.png)
+
+1. Find your log statements in the LogDNA dashboard by just leveraging the search field
+
+1. Additionally add a filter with the label.app attribute. It can be very easily added by just selecting a row, selecting the field you want to add to your filter and press the "+" button.
+   ![image](images/lab-logdna-02.png)
+
 1. Experiment with AND and OR operators
+   ![image](images/lab-logdna-03.png)
 
 ### Create a view based on your current query
 
