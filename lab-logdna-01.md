@@ -63,7 +63,7 @@ If you do not see a command prompt, try pressing enter.
    ![image](images/lab-logdna-05.png)
 1. Work with the default settings, just add your email address.
    ![image](images/lab-logdna-06.png)
-1. Attach this email preset to your view
+1. Attach this email preset to your view as an alert.
    ![image](images/lab-logdna-07.png)
 
 1. Create additional log entries
