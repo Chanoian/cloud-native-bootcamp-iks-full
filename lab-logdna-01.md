@@ -49,7 +49,7 @@ If you do not see a command prompt, try pressing enter.
 1. Additionally add a filter with the label.app attribute. It can be very easily added by just selecting a row, selecting the field you want to add to your filter and press the "+" button.
    ![image](images/lab-logdna-02.png)
 
-1. Experiment with AND and OR operators
+1. Experiment with AND and OR operations, attached infos from the syntax help.
    ![image](images/lab-logdna-03.png)
 
 ### Create a view based on your current query
