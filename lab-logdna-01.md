@@ -54,12 +54,18 @@ If you do not see a command prompt, try pressing enter.
 
 ### Create a view based on your current query
 
-1. Create a LogDNA view called 'YOUR-INITIALS-app-view'
+1. Create a LogDNA view called 'yourinitials-app-view'. By doing so you save your current search configuration into a persistent view.
+   ![image](images/lab-logdna-04.png)
 
 ### Create an alert based on your view
 
-1. Create an Alert Preset called 'YOUR-INITIALS-email-preset' that leverages your email address
+1. Create an Alert Preset called 'yourinitals-email-preset' that leverages your email address.
+   ![image](images/lab-logdna-05.png)
+   ![image](images/lab-logdna-06.png)
+
 1. Attach this email preset to your view
+   ![image](images/lab-logdna-06.png)
+
 1. Create additional log entries
 
 ## Verification
