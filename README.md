@@ -46,4 +46,6 @@
 2. [Using Sysdig Metrics](./lab-sysdig-02.md)
 3. [Monitoring Java with Prometheus](./lab-sysdig-03.md)
 
-## Day 10
+## Day 10 - Logging and Activity Tracking with LogDNA
+
+1. [Using LogDNA](./lab-logdna-01.md)
