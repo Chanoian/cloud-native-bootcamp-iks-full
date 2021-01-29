@@ -59,12 +59,12 @@ If you do not see a command prompt, try pressing enter.
 
 ### Create an alert based on your view
 
-1. Create an Alert Preset called 'yourinitals-email-preset' that leverages your email address.
+1. Create an Alert Preset called 'yourinitals-email-preset'.
    ![image](images/lab-logdna-05.png)
+1. Work with the default settings, just add your email address.
    ![image](images/lab-logdna-06.png)
-
 1. Attach this email preset to your view
-   ![image](images/lab-logdna-06.png)
+   ![image](images/lab-logdna-07.png)
 
 1. Create additional log entries
 
