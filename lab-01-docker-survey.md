@@ -9,3 +9,7 @@ We use beyond poll in Slack to see how far the participants are. We use Public v
 ```bash
 /poll "Lab 1 - Docker Lab" "I have run Docker Hello World" "I did the CouchDB interactions" "I have removed the containers and images"
 ```
+
+```bash
+/poll "Lab 1 - Docker Lab (extended)" "I have build, tagged and run a custom nodejs image"
+```
