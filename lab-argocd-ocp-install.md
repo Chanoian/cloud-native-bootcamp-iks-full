@@ -1,13 +1,28 @@
-# ArgoCD on OpenShift
+# Tekton / OpenShift Pipelines + ArgoCD on OpenShift
 
-## Create Project namespace
+## Setting Up Tekton / OpenShift Pipelines on IBM ROKS
+
+### Install the OpenShift Pipelines Operator
+
+Install the OpenShift Pipeline Operator from within the Operator Hub. Choose the appropriate channel.
+![image](images/pipeline_operator_1.png)
+
+We are leveraging version 1.2.3 here.
+![image](images/pipeline_operator_2.png)
+
+If the Pipelines view is visible in the OpenShift navigation the initial install did work out.
+![image](images/pipeline_operator_3.png)
+
+## Setting Up ArgoCD on OpenShift 4.5 on IBM ROKS
+
+### Create Project namespace
 
 ```bash
 oc create namespace argocd
 oc project argocd
 ```
 
-## Apply the ArgoCD Manifest on OpenShift
+### Apply the ArgoCD Manifest on OpenShift
 
 ```bash
 wget https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -17,7 +32,7 @@ oc get pods -n argocd
 oc get pods -l=app.kubernetes.io/name=argocd-dex-server -n argocd
 ```
 
-## Step 3: Get the ArgoCD Server password
+### Step 3: Get the ArgoCD Server password
 
 ```bash
 ARGOCD_SERVER_PASSWORD=$(oc -n argocd get pod -l "app.kubernetes.io/name=argocd-server" -o jsonpath='{.items[*].metadata.name}')
@@ -25,7 +40,7 @@ ARGOCD_SERVER_PASSWORD=$(oc -n argocd get pod -l "app.kubernetes.io/name=argocd-
 echo $ARGOCD_SERVER_PASSWORD
 ```
 
-## Step 4: Expose ArgoCD Server using OpenShift Route
+### Step 4: Expose ArgoCD Server using OpenShift Route
 
 ```bash
 oc -n argocd patch deployment argocd-server -p '{"spec":{"template":{"spec":{"$setElementOrder/containers":[{"name":"argocd-server"}],"containers":[{"command":["argocd-server","--insecure","--staticassets","/shared/app"],"name":"argocd-server"}]}}}}'
@@ -36,12 +51,12 @@ oc get route -n argocd
 echo https://$(oc get routes argocd-server -o=jsonpath='{ .spec.host }')
 ```
 
-## Step 5: Login with Argo CD CLI
+### Step 5: Login with Argo CD CLI
 
 ```bash
 ARGOCD_ROUTE=$(oc -n argocd get route argocd-server -o jsonpath='{.spec.host}')
 ARGOCD_SERVER_PASSWORD=$(oc -n argocd get pod -l "app.kubernetes.io/name=argocd-server" -o jsonpath='{.items[*].metadata.name}')
 
-argocd --insecure --grpc-web login ${ARGOCD_ROUTE} --username admin --password ${ARGOCD_SERVER_PASSWORD}
-argocd --insecure --grpc-web --server ${ARGOCD_ROUTE} account update-password --current-password ${ARGOCD_SERVER_PASSWORD} --new-password Str0ngP@ssw0rd!
+argocd --grpc-web login ${ARGOCD_ROUTE} --username admin --password ${ARGOCD_SERVER_PASSWORD}
+argocd --grpc-web --server ${ARGOCD_ROUTE} account update-password --current-password ${ARGOCD_SERVER_PASSWORD} --new-password Str0ngP@ssw0rd!
 ```
