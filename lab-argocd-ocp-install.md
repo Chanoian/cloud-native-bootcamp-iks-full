@@ -22,7 +22,7 @@ oc create namespace argocd
 oc project argocd
 ```
 
-### Apply the ArgoCD Manifest on OpenShift
+### Apply the ArgoCD Manifest on OpenShift (ArgoCD 1.8.3)
 
 ```bash
 wget https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -51,12 +51,17 @@ oc get route -n argocd
 echo https://$(oc get routes argocd-server -o=jsonpath='{ .spec.host }')
 ```
 
-### Step 5: Login with Argo CD CLI
+### Step 5: Recreate Admin Passwords after setting up TLS connectivity if regular login does not work
+
+1. Remove key admin.password and admin.passwordMtime from argo-cd-secret
+2. Scale deployment to 0, then up to 1 again to recreate the secret keys
+
+### Step 6: Login with Argo CD CLI
 
 ```bash
 ARGOCD_ROUTE=$(oc -n argocd get route argocd-server -o jsonpath='{.spec.host}')
 ARGOCD_SERVER_PASSWORD=$(oc -n argocd get pod -l "app.kubernetes.io/name=argocd-server" -o jsonpath='{.items[*].metadata.name}')
 
 argocd --grpc-web login ${ARGOCD_ROUTE} --username admin --password ${ARGOCD_SERVER_PASSWORD}
-argocd --grpc-web --server ${ARGOCD_ROUTE} account update-password --current-password ${ARGOCD_SERVER_PASSWORD} --new-password Str0ngP@ssw0rd!
+argocd --grpc-web --server ${ARGOCD_ROUTE} account update-password --current-password ${ARGOCD_SERVER_PASSWORD} --new-password <yournewpassword>
 ```
