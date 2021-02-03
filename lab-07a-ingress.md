@@ -149,3 +149,17 @@ $   curl https://dev-yourinitials.mycluster-<hash>-0000.eu-de.containers.appdoma
 
 {"firstName":"John","lastName":"Doe","test":"Passed"}
 ```
+
+## Additional Information
+
+Follow these steps if you have to work with a custom domain:
+
+Create a custom domain. To register your custom domain, work with your Domain Name Service (DNS) provider or IBM Cloud DNS. If the apps that you want Ingress to expose are in different namespaces in one cluster, register the custom domain as a wildcard domain, such as \*.custom_domain.net. Note that domains are limited to 255 characters or fewer.
+
+Define an alias for your custom domain by specifying the IBM-provided domain as a Canonical Name record (CNAME). To find the IBM-provided Ingress domain, run ibmcloud ks cluster get --cluster <cluster_name> and look for the Ingress subdomain field.
+
+To use TLS termination, create a secret in the namespace where your apps exist that contains your own TLS certificate. For example, if a TLS certificate is stored in IBM Cloud Certificate Manager that you want to use, you can import its associated secret into your cluster by running the following command:
+
+```bash
+ibmcloud ks ingress secret create --name <secret_name> --cluster <cluster_name_or_ID> --cert-crn <certificate_crn> [--namespace <namespace>]
+```
