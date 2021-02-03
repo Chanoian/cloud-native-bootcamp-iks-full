@@ -103,10 +103,10 @@ Persisted:      true
 $   ibmcloud ks ingress secret create --cluster <cluster_name_or_ID> --cert-crn <CRN> --name <ingress_secret_name> --namespace dev-**yourinitials**
 
 $   kubectl get secrets -n dev-**yourinitials**
-NAME: mycluster-<hash>-0000                                                TYPE: kubernetes.io/tls
+NAME: mycluster-<hash>-0000    TYPE: kubernetes.io/tls
 ```
 
-Apply the following Ingress resources in your namespace.
+Apply the following Ingress resources within your namespace.
 
 **ingress-v119.yaml**
 
