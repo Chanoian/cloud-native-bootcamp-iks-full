@@ -57,7 +57,7 @@ To verify your setup is complete, check /etc/yoda-service for the yoda.cfg file 
 $ kubectl exec -it yoda-service -- /bin/bash
 $ cd /etc/yoda-service
 $ cat yoda.cfg
-$ echo DB_PASSWORD
+$ echo $DB_PASSWORD
 ```
 
 Excellent you have done it - this was not an easy lab!
