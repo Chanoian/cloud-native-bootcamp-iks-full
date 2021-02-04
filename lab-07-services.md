@@ -104,17 +104,7 @@ yoda-svc   ClusterIP   172.21.235.139   <none>        80/TCP         48s
 
 ### Validating internet access through node port into jedi-svc
 
-To access the jedi-svc we have to find out the public IP addresses of our worker nodes. Using `kubectl get nodes` gives us also only private ip address segments.
-
-```bash
-$ kubectl get nodes
-NAME             STATUS   ROLES    AGE    VERSION
-10.134.237.212   Ready    <none>   2d3h   v1.17.11+IKS
-10.134.237.244   Ready    <none>   2d3h   v1.17.11+IKS
-10.134.237.245   Ready    <none>   2d3h   v1.17.11+IKS
-```
-
-The worker nodes within IBM Cloud are attached to a public and a private VLAN. To get to the public IPs you have to use `ibmcloud ks worker ls --cluster clustername`.
+To access the jedi-svc we have to find out the public IP addresses of our worker nodes. Using `kubectl get nodes -o wide` gives us private and public ip addresses of our worker nodes. The worker nodes within IBM Cloud are attached to a public and a private VLAN. Alternatively you can also use `ibmcloud ks worker ls --cluster clustername`.
 
 ```bash
 $ ibmcloud ks worker ls --cluster iks-garage-dach

@@ -1,0 +1,1 @@
+/poll "Lab 7a Kubernetes Ingress - Survey" "I have created the base deployment and service" "I have recreated the TLS secret in my namespace" "I have adopted and deployed the Ingress resource" "I could successfully test the endpoints"
