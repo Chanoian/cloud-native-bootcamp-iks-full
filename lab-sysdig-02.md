@@ -29,7 +29,7 @@ https://cloudnative101.dev/electives/monitoring/sysdig/activities/alerts/
 
 2. Create a custom high severity metric alert with the following characteristics:
 
-- Name: [gw Web Service] HTTP Errors
+- Name: [your-initials Web Service] HTTP Errors
 - Metric: Sum of net.http.error.count
 - Scope: Use kubernetes.namespace.name + kubernetes.service.name
 - Trigger: if metric > 1 for the last 1 minute in sum send a single alert
