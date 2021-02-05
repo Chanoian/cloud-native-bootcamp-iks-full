@@ -13,9 +13,9 @@ kubectl config set-context --current --namespace=dev-**yourinitials**
 
 ## References (but not needed for this lab)
 
-https://cloudnative101.dev/electives/monitoring/sysdig/
-https://cloudnative101.dev/electives/monitoring/sysdig/activities/dashboards/
-https://cloudnative101.dev/electives/monitoring/sysdig/activities/alerts/
+* https://cloudnative101.dev/electives/monitoring/sysdig/
+* https://cloudnative101.dev/electives/monitoring/sysdig/activities/dashboards/
+* https://cloudnative101.dev/electives/monitoring/sysdig/activities/alerts/
 
 ## Challenges to be solved
 
