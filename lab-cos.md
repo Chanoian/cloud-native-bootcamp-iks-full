@@ -56,6 +56,8 @@ First you have to retrieve the hmac credentials from your Cloud Object Storage i
 
 ![image](images/lab-cos-cyberduck-01.png)
 
+The "cos_hmac_keys" are the relevant parts of the credentials you have to use.
+
 ```json
 "cos_hmac_keys": {
     "access_key_id": "",
