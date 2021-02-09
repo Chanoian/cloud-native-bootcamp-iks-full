@@ -1,0 +1,1 @@
+/poll "Cloud Object Storage Lab" "I have created my two custom buckets" "I have uploaded the data into my bucket" "I have created my SQL Query instance" "I have found out which are the 5 worst Covid-19 related weeks in my country" "I have installed Cyberduck or similar leveraging S3 + HMAC credentials to access the data in a convenient way"
