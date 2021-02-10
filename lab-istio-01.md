@@ -1,4 +1,4 @@
-# Lab: Using Istio leveraging the BookInfo application
+# Lab: Istio Lab 1 - Deploying the BookInfo application
 
 ## Prerequisites
 
@@ -90,6 +90,10 @@ curl -o /dev/null -s -w "%{http_code}\n" http://${GATEWAY_URL}/productpage
 ```
 
 View the BookInfo web page in a browser.
+
+```bash
+open http://$GATEWAY_URL/productpage
+```
 
 ## Verification
 
