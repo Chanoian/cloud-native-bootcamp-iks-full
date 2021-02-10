@@ -37,7 +37,7 @@ cd event-streams-samples/kafka-java-console-sample
 gradle clean && gradle build
 ```
 
-Produce some Kafka events to your custom topic and cancel the process after a while.
+Produce some Kafka events to your custom topic and cancel the process after a while. For the kafka_brokers_sasl you should use a format like this: "broker-1:port1,broker-2:port2,broker-3:port3".
 
 ```bash
 java -jar ./build/libs/kafka-java-console-sample-2.0.jar <kafka_brokers_sasl> <api_key> -producer -topic <dev-yourinitials>
