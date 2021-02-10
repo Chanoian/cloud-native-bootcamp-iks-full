@@ -49,7 +49,7 @@ const getDB = () => new Promise((resolve, reject) => {
 async function main(params) {
   try {
     const cloudant = await getDB();
-    const db = cloudant.db.use('tasks');
+    const db = cloudant.db.use('yourinitials-tasks'); // @TODO: REPLACE Database name
 
     for (let message of params.messages) {
       const value = JSON.parse(message.value || "{}");
