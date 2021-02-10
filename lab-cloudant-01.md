@@ -15,7 +15,7 @@
 The challenge is to create a todo app that can create, update and delete tasks. The persistence is based on cloudant.
 
 - Firstly we need an existing instance of Cloudant
-- Once we have an instance, navigate to Cloudant's dashboard and create a database called "tasks"
+- Once we have an instance, navigate to Cloudant's dashboard and create a database called "yourinitials-tasks"
 - Navigate to tasks database and create our first task document manually with content:
 
 ```
