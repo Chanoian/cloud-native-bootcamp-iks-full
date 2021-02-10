@@ -65,6 +65,7 @@ async function main(params) {
   }
 }
 ```
+* Now try to generate some events with the producer from [Kafka Lab](https://github.com/ibm-garage-dach/cloud-native-bootcamp-iks-full/blob/main/lab-kafka-01.md)
 
 ## Verification
 To verify navigate to you cloudant database and make sure that documents with text "This is a test message #" are there.
