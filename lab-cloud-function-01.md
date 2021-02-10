@@ -1,6 +1,7 @@
 # Cloud Function Lab 1
 
 ## Prerequisites
+* We will need cloudant db from https://github.com/ibm-garage-dach/cloud-native-bootcamp-iks-full/blob/main/lab-cloudant-01.md
 * Completed https://github.com/ibm-garage-dach/cloud-native-bootcamp-iks-full/blob/main/lab-kafka-01.md
 
 ## Supporting Information
@@ -12,7 +13,7 @@ We want to create a cloud function that can be triggered by a message sent to an
 * To create functions and triggers navigate to cloud function page: https://cloud.ibm.com/functions/
 * Create an action (https://cloud.ibm.com/functions/create/action), give your action a name "{your-initials}-action", runtime Node.js 12
 * Actions can be manually invoked. Navigate to your action, then go to code and press on "Invoke" button, you should see the result of your action.
-* Now let's make our function execute whenever we get a new event from the Event Stream service, to create a trigger navigate to "Connected Triggers" inside your action and add an "Event Streams" triger with the *topic* from your Event Stream lab (dev-yourinitials), also *do not* select *"is JSON data"*.
+* Now let's make our function execute whenever we get a new event from the Event Stream service, to create a trigger navigate to "Connected Triggers" inside your action and add an "Event Streams" triger with the *topic* from your Event Stream lab (dev-yourinitials), also **do NOT select** *"is JSON data"*.
 
 * At the moment your action doesn't do much, so let's make it smarter and persist message data to database for example, replace actual code of the action with the following, also replace Cloudant URL and API KEY placeholders:
 
