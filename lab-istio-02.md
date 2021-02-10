@@ -11,7 +11,8 @@ Make sure everytime you create resources that you
 
 ```bash
 ibmcloud ks cluster config --cluster **kubeclusterid**
-kubectl config set-context --current --namespace=dev-**yourinitials**
+kubectl config set-context --current --namespace=dev-**your
+**
 ```
 
 ** Important note: This lab cannot be run concurrently on the same istio ingress controller - clean up your namespace before you run the same lab on the same istio ingress controller **

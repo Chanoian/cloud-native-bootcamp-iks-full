@@ -82,7 +82,7 @@ spec:
         - "*"
 ```
 
-Next is the Istio VirtualService that we have to adopt to be able to use the same Gateway. Make sure to use **yourinitials** in the prefix section.
+Next you have to create the VirtualService.
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
