@@ -1,4 +1,4 @@
-# Lab: Istio Lab 1 - Deploying the BookInfo application
+# Lab: Istio Lab 1 - Deploying the Istio BookInfo application
 
 ## Prerequisites
 
@@ -12,7 +12,9 @@ ibmcloud ks cluster config --cluster **kubeclusterid**
 kubectl config set-context --current --namespace=dev-**yourinitials**
 ```
 
-The Istio plugin is enabled on the shared IKS Cluster. ADD HOW TO CHECK.
+The Istio plugin is enabled on the shared IKS Cluster.
+
+** Important note: This lab cannot be run concurrently on the same istio ingress controller - clean up your namespace before you run the same lab on the same istio ingress controller **
 
 ## Challenges to be solved
 
@@ -49,18 +51,72 @@ Label the default namespace for automatic sidecar injection. Any new pods that a
 kubectl label namespace dev-istio-yourinitials istio-injection=enabled
 ```
 
-Deploy the BookInfo application, gateway, and destination rules.
+Deploy the BookInfo application which contains the deployments, service accounts and services.
 
 ```bash
 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
-kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
-kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
 ```
 
 Ensure that the BookInfo microservices pods are Running.
 
 ```bash
 kubectl get pods
+```
+
+Now we have to add the specific Istio resources, we will first start with the plain HTTP Istio Gateway provided in the samples.
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: bookinfo-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
+```
+
+Next is the Istio VirtualService that we have to adopt to be able to use the same Gateway. Make sure to use **yourinitials** in the prefix section.
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bookinfo
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - bookinfo-gateway
+  http:
+    - match:
+        - uri:
+            exact: /productpage
+        - uri:
+            prefix: /static
+        - uri:
+            exact: /login
+        - uri:
+            exact: /logout
+        - uri:
+            prefix: /api/v1/products
+      route:
+        - destination:
+            host: productpage
+            port:
+              number: 9080
+```
+
+As the last step deploy the Istio Destination Rules.
+
+```bash
+kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
 ```
 
 ### Retrieve the public address for the istio-ingressgateway load balancer that exposes BookInfo
@@ -93,55 +149,6 @@ View the BookInfo web page in a browser.
 
 ```bash
 open http://$GATEWAY_URL/productpage
-```
-
-### Configure the bookinfo-gateway to use TLS termination.
-
-The default bookinfo sample is not yet configured with TLS. We will change that now by replacing the bookinfo gateway in your namespace.
-
-```yaml
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: bookinfo-gateway
-spec:
-  selector:
-    istio: ingressgateway # use istio default controller
-  servers:
-    - port:
-        number: 80
-        name: http
-        protocol: HTTP
-      hosts:
-        - "*"
-```
-
-Delete the existing bookinfo-gateway in your namespace.
-
-```bash
-kubectl delete gateway bookinfo-gateway
-```
-
-Recreate the gateway with beyond TLS enabled endpoint. Determine the name of the secret with `ibmcloud ks nlb-dns ls --cluster <cluster_name>`. Make sure you use the SSL Cert Secret name from the Load Balancer in the namespace istio-system.
-
-```yaml
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: bookinfo-gateway
-spec:
-  selector:
-    istio: ingressgateway
-  servers:
-    - port:
-        number: 443
-        name: https
-        protocol: HTTPS
-      tls:
-        mode: SIMPLE
-        credentialName: <your_istio_system_ssl_cert_secret_name>
-      hosts:
-        - "*"
 ```
 
 ## Verification
