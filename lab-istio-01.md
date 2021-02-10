@@ -95,8 +95,59 @@ View the BookInfo web page in a browser.
 open http://$GATEWAY_URL/productpage
 ```
 
+### Configure the bookinfo-gateway to use TLS termination.
+
+The default bookinfo sample is not yet configured with TLS. We will change that now by replacing the bookinfo gateway in your namespace.
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: bookinfo-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
+```
+
+Delete the existing bookinfo-gateway in your namespace.
+
+```bash
+kubectl delete gateway bookinfo-gateway
+```
+
+Recreate the gateway with beyond TLS enabled endpoint. Determine the name of the secret with `ibmcloud ks nlb-dns ls --cluster <cluster_name>`. Make sure you use the SSL Cert Secret name from the Load Balancer in the namespace istio-system.
+
+```yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: bookinfo-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: <your_istio_system_ssl_cert_secret_name>
+      hosts:
+        - "*"
+```
+
 ## Verification
 
-Try refreshing the page several times. Different versions of the reviews section round-robin through no stars (v1 of reviews), black stars (v2), and red stars (v3).
+Try refreshing the page several times. Different versions of the reviews section round-robin through no stars (v1 of reviews), black stars (v2), and red stars (v3). Validate that you work on a secure TLS connection.
+
+![image](images/lab-istio-01.png)
 
 See also: https://cloud.ibm.com/docs/containers?topic=containers-istio-mesh#istio_bookinfo_understanding
