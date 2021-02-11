@@ -14,7 +14,9 @@ kubectl config set-context --current --namespace=dev-**yourinitials**
 
 The Istio plugin is enabled on the shared IKS Cluster.
 
-** Important note: This lab cannot be run concurrently on the same istio ingress controller - clean up your namespace before you run the same lab on the same istio ingress controller **
+** Important note: This lab hasn't been fully tested be run concurrently on the same istio ingress controller - clean up your namespace before you run the same lab on the same istio ingress controller **
+
+This link is the formal offering documentation for the Managed Istio offering on IKS: https://cloud.ibm.com/docs/containers?topic=containers-istio . Highly recommended to take a close look.
 
 ## Challenges to be solved
 
