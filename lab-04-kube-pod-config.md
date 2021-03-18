@@ -22,7 +22,7 @@ Hint 2: You can create multi-line strings in YAML e.g. with:
 
 ```
 data:
-  my-key: |-
+  filename.cfg: |-
     line.a=1
     line.b=2
 ```
