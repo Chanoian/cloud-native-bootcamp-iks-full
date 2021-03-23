@@ -25,7 +25,7 @@ This link is the formal offering documentation for the Managed Istio offering on
 Create a new namespace called dev-istio-yourinitials and switch to that context.
 
 ```bash
-kubectl create namespace kubectl create namespace dev-istio-yourinitials
+kubectl create namespace dev-istio-yourinitials
 kubectl config set-context --current --namespace=dev-istio-yourinitials
 ```
 
