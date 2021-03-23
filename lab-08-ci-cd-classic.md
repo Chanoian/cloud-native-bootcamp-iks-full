@@ -1,4 +1,4 @@
-# Lab 9: CI/CD - Develop a Kubernetes app with Helm 
+# Lab 8: CI/CD - Develop a Kubernetes app with Helm 
 
 ## Prerequisites
 
