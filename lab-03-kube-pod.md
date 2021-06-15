@@ -19,6 +19,15 @@ Make sure everytime you create resources that you
 
 ```bash
 ibmcloud ks cluster config --cluster **kubeclusterid**
+```
+
+Create your own namespace
+```
+kubectl create namespace dev-**yourinitials**
+```
+
+Select your own namespace
+```
 kubectl config set-context --current --namespace=dev-**yourinitials**
 ```
 
