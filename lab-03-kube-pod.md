@@ -32,7 +32,7 @@ Hint: make sure to select **more** on the Kubernetes YAML examples in above supp
 ## Challenge to be solved
 
 Create your own Kubernetes namespace and set it into your Kubernetes context.
-Write a pod definition named yoda-service-pod.yml. Then create a pod in the cluster using this definition to make sure it works.
+Write a pod definition named `yoda-service-pod.yml`. Then create a pod in the cluster using this definition to make sure it works.
 
 The specifications of this pod are as follows:
 
