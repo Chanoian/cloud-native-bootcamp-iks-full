@@ -14,9 +14,7 @@ NAME             STATUS   ROLES    AGE     VERSION
 
 Make sure everytime you create resources that you
 
-- target the right Kubernetes cluster
-- target the right Kubernetes namespace and set it into your kubectl context
-
+Target the right Kubernetes cluster
 ```bash
 ibmcloud ks cluster config --cluster **kubeclusterid**
 ```
@@ -26,7 +24,7 @@ Create your own namespace
 kubectl create namespace dev-**yourinitials**
 ```
 
-Select your own namespace
+Target the right Kubernetes namespace and set it into your kubectl context
 ```
 kubectl config set-context --current --namespace=dev-**yourinitials**
 ```
