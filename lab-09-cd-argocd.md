@@ -1,8 +1,30 @@
 # Lab 9: Continous Deployment with ArgoCD (on OpenShift)
 
-## Supporting Information
+## Accessing the dashboard
 
-- Login to shared ArgoCD environment we have provided to you as part of the lab delivery
+Login to shared ArgoCD environment we have provided to you as part of the lab delivery.
+
+1. Find the public IP address of the `argocd-server` service in the argocd namespace:
+
+```sh
+kubectl get services -n argocd
+```
+
+2. Find the DNS name for the load balancer that points to that IP:
+
+```sh
+ibmcloud ks nlb-dns ls -c <BOOCAMP_CLUSTER>
+```
+
+3. Visit that URL in your browser (it should be `https://<HOSTNAME OF LOAD BALANCER>`)
+
+4. You should see the argo dashboard, login with the username `admin`, you can find the password with the following command:
+
+```sh
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d && echo
+```
+
+## Adding an application
 
 - Create a new application with the following parameters
 
@@ -22,6 +44,12 @@
 - Select SYNC, then SYNCHRONIZE to synchronize the application
 - Once your app is deployed select it to drill into the Kubernetes resources
 
-## Verification on OCP
+## Verification
 
-- If your sync worked and the resources have all been generated you are fine. We will take a look into the OpenShift console next week to validate your generated resources and give you a peek into OCP in comparison.
+Either using the Cloud CLI or the dashboard, you can verify that all the resources were created.
+
+You can also test your app by running a curl command like the following:
+
+```sh
+http://<THE APP>/greeting?name=Dom
+```
