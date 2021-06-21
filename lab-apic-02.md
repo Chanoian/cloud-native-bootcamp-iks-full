@@ -15,6 +15,6 @@ Please note the following **changes** though:
 
 - As you are working in draft mode, you will see all APIs and Products within the instance. Thats why you have to use your initials also for the draft Product and APIs in the lab. But please only for **Product title (Development-yourinitials)**, **Product name (Test-yourinitials)**, **API title (nodejs-test-yourinitials)** and **API name (nodejs-test-yourinitials)** .
 
-- Please use the following URLs as endpoints for your services, do not forget the **https://** .
-  - get /students -> https://co-operators-bootcamp-ddd93d3a0fef01f6b396b69d343df410-0000.tor01.containers.appdomain.cloud/students
-  - get /testers -> https://co-operators-bootcamp-ddd93d3a0fef01f6b396b69d343df410-0000.tor01.containers.appdomain.cloud/testers
+- Please use the following URLs as endpoints for your services, do not forget the **http://** .
+  - get /students -> http://169.46.36.235:3000/students
+  - get /testers -> http://169.46.36.235:3000/testers
