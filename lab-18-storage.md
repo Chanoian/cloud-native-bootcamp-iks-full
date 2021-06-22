@@ -31,7 +31,7 @@ This persistent storage needs to conform to the following requirements:
 - 20GB storage with 4 IOPS per GB
 - storage should be billed hourly, not monthly
 - storage access is restricted to one pod only (read + write)
-- storage is deployed in the region: **eu-de** and zone: **fra02**
+- storage is deployed in the region: **us-east** and zone: **tor01**
 
 Attached the YAML of the PostgreSQL. Besides the Persistent Volume Claim you need to create another Kubernetes Resources to start up the containers in the Kubernetes Pod successfully.
 
