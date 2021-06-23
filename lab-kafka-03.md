@@ -21,7 +21,7 @@ After you have built and run your Nodejs app with Kafka integration locally - th
 2. Bind that service into your namespace in the cluster. This will create a secret that contains the credentials required to connect to that service:
 
     ```bash
-    ibmcloud ks cluster service bind --cluster <cluster_name_or_ID> --namespace <your_namespace> --service <service_instance_name>
+    ibmcloud ks cluster service bind --cluster <cluster_name_or_ID> --namespace <your_namespace> --service <service_instance_name> --role manager
     ```
     
 3. This should have created a secret. Take a look at the keys of the data that is stored inside the secret (hint: kubectl describe will show this). You should find a key called binding.
@@ -48,6 +48,8 @@ To verify we'll see the logs from the pod by doing the following:
 ```bash
 kubectl logs <YOUR-POD-NAME -n <YOUR-NAMESPACE>
 ```
+
+You should see that the messages are being produced and also consumed.
 
 
 
