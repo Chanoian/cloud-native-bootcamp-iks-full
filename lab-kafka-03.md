@@ -34,9 +34,9 @@ After you have built and run your Nodejs app with Kafka integration locally - th
     
 ## Running the app
 
-We're going to use the same Docker image that you ere running locally in the first part of the lab.
+We're going to use the same Docker image that you were running locally in the first part of the lab.
 
-We've already built a docker image for this application, which is available at `us.icr.io/cooperators-bootcamp/js-kafka:1.0`
+We've already built a docker image for this application, which is available at `ibmgarage/js-kafka:1.0`
 
 In order to connect to the Kafka, the container is expecting an environment variable called VCAP_SERVICES to be defined, this should contain the contents of the binding key from inside the secret you created earlier.
 
