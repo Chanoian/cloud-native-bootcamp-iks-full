@@ -56,6 +56,7 @@ The code expects to find the credentials in a an environment variable called `VC
 
     * `Using VCAP_SERVICES to find credentials.`
     * `Using custom topic name: dev-<YOUR INITIALS>`
+    * `Error: Topic 'dev-<YOUR INITIALS>' already exists.` - actually a good error because you created this previously 🙂 
     * Messages produced, e.g. `Message produced, partition: 0 offset: 0`
     * Messaged consumed, e.g. `Message consumed: topic=dev-dom, partition=0, offset=3, key=Key3, value=This is a test message #3`
 
