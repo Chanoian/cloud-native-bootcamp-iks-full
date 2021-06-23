@@ -40,6 +40,8 @@ We've already built a docker image for this application, which is available at `
 
 In order to connect to the Kafka, the container is expecting an environment variable called `VCAP_SERVICES` to be defined, this should contain the contents of the binding key from inside the secret you created earlier.
 
+And lastly if you don't provide a topic - the image will use default one which is `kafka-nodejs-console-sample-topic`, to chage to your own topic you'll have to provide your topic name as arguments for the container.
+
 
 ## Testing the app
 
