@@ -48,7 +48,7 @@ And lastly if you don't provide a topic - the image will use default one which i
 To verify we'll see the logs from the pod by doing the following:
 
 ```bash
-kubectl logs <YOUR-POD-NAME -n <YOUR-NAMESPACE>
+kubectl logs <YOUR-POD-NAME> -n <YOUR-NAMESPACE>
 ```
 
 You should see that the messages are being produced and also consumed.
