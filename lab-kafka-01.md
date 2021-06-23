@@ -33,7 +33,7 @@ Retrieve the code with your git client and build it using docker:
 ```bash
 git clone https://github.com/ibm-garage-dach/event-streams-samples
 cd event-streams-samples/kafka-nodejs-console-sample
-docker build -t js-kafka .
+docker build -t js-kafka-<YOUR INITIALS> .
 ```
 
 The code expects to find the credentials in a an environment variable called `VCAP_SERVICES`. We'll supply these using the `--env-file` parameter of `docker run`.
@@ -49,7 +49,7 @@ The code expects to find the credentials in a an environment variable called `VC
  2. Run docker with the env file passed, and specifying the topic name as an argument:
 
     ```sh
-    docker run --env-file=.env js-kafka dev-<YOUR INITIALS>
+    docker run --env-file=.env js-kafka-<YOUR INITIALS> dev-<YOUR INITIALS>
     ```
 
  3. You should see the following in the output:
