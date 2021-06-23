@@ -38,7 +38,7 @@ We're going to use the same Docker image that you were running locally in the fi
 
 We've already built a docker image for this application, which is available at `ibmgarage/js-kafka:1.0`
 
-In order to connect to the Kafka, the container is expecting an environment variable called VCAP_SERVICES to be defined, this should contain the contents of the binding key from inside the secret you created earlier.
+In order to connect to the Kafka, the container is expecting an environment variable called `VCAP_SERVICES` to be defined, this should contain the contents of the binding key from inside the secret you created earlier.
 
 
 ## Testing the app
