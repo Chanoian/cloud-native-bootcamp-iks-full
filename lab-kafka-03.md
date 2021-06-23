@@ -43,8 +43,11 @@ In order to connect to the Kafka, the container is expecting an environment vari
 
 ## Testing the app
 
+To verify we'll see the logs from the pod by doing the following:
 
-
+```bash
+kubectl logs <YOUR-POD-NAME -n <YOUR-NAMESPACE>
+```
 
 
 
