@@ -9,7 +9,7 @@
 
 After you have built and run your Nodejs app with Kafka integration locally - the next challenge is about bringing that app to Kube.
 
-### Connect the database into your namespace
+### Connect the kafka into your namespace
 
 1. Find the instance name for the event streams service that I created:
 
