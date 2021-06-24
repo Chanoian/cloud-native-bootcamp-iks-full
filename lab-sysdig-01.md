@@ -3,7 +3,6 @@
 ## Prerequisites
 
 - Connected to IBM Kubernetes cluster with attached Sysdig agent
-- Assumption here is that most of you will use IBM Cloud Shell (due to networking and local tools, like curl)
 - Make sure everytime you create resources that you target the right Kubernetes cluster and namespace
 
 ```bash
@@ -24,8 +23,8 @@ kubectl config set-context --current --namespace=dev-**yourinitials**
 1. Create the following test deployment along with the service definition in your namespace.
 
 ```bash
-$ kubectl -n dev-yourinitials create deployment yourinitials-web-app --image=docker.io/kennethreitz/httpbin
-$ kubectl -n dev-yourinitials create svc nodeport yourinitials-web-app --tcp=8080:80
+kubectl create deployment yourinitials-web-app --image=docker.io/kennethreitz/httpbin
+kubectl create service clusterip yourinitials-web-app --tcp=8080:80
 ```
 
 2. Add a port mapping
@@ -33,7 +32,7 @@ $ kubectl -n dev-yourinitials create svc nodeport yourinitials-web-app --tcp=808
 Create a port mapping to run local curl requests, so that we can produce application metrics data.
 
 ```bash
-$ kubectl -n dev-yourinitials port-forward service/yourinitials-web-app 8080:8080
+kubectl port-forward service/yourinitials-web-app 8080:8080
 ```
 
 Bring the port-forwarding kubectl command in the background with pressing **CTRL-Z** and then typing **bg** .
@@ -41,7 +40,7 @@ Bring the port-forwarding kubectl command in the background with pressing **CTRL
 3. Start creating HTTP requests
 
 ```bash
-$ while true; do sleep 1; curl http://localhost:8080/status/200 -si | head -1 ; done
+while true; do sleep 1; curl http://localhost:8080/status/200 -si | head -1 ; done
 ```
 
 Be patient, it can take a few minutes until the first metrics data flows into our shared Sysdig instance for the first time.

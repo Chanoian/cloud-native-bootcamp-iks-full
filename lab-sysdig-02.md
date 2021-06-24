@@ -3,7 +3,6 @@
 
 - Access to IBM Cloud
 - Connected to Kubernetes cluster with attached Sysdig agent
-- Assumption here is that most of you will use IBM Cloud Shell due to networking restrictions (this includes all the required tools you will use, e.g. curl, kubectl, etc.)
 - The httpbin deployment from the previous sysdig lab
 
 Make sure everytime you create resources that you
