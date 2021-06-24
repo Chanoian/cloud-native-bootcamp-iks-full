@@ -16,7 +16,7 @@ kubectl config set-context --current --namespace=dev-**yourinitials**
 
 1. Review the instrumented java application [Main.java](https://github.com/ibm-cloud-architecture/learning-cloudnative-101/blob/master/examples/monitoring/prometheus/java/src/main/java/Main.java)
 
-2. Deploy that java application:
+2. Deploy that java application to your namespace:
 
 ```yaml
 apiVersion: apps/v1
@@ -47,7 +47,7 @@ You can see the extra annotations that tell sysdig about the prometheus endpoint
 3. Expose the java application service
 
 ```shell
-kubectl create svc nodeport prometheus-java-app --tcp=80:80 --tcp 8080:8080
+kubectl create svc nodeport prometheus-java-app -n <YOUR-NAMESPACE> --tcp=80:80 --tcp 8080:8080
 ```
 
 **Note:** we're actually exposing two ports, one for the app and one for its metrics
@@ -57,7 +57,7 @@ kubectl create svc nodeport prometheus-java-app --tcp=80:80 --tcp 8080:8080
 You can see which nodeports have been assigned by looking at the mapping. The application endpoint will have a mapping from port 80, the prometheus endpoint will have a mapping from port 8080:
 
 ```sh
-kubectl get service prometheus-java-app
+kubectl get service prometheus-java-app -n <YOUR-NAMESPACE>
 ```
 
 Sysdig picks up the metrics from the application by issuing a GET request to the endpoint in the `prometheus.io/path` annotation. We can query this ourselves using curl and see the data it gets back:
